@@ -85,11 +85,15 @@ def logout():
 @login_required
 def profile():
     if request.method == "POST":
-        res = dbase.addUserinfo(request.form['name_surname'],
-                                request.form['gender'], request.form['profession_'],
-                                request.form['username_'], request.form['password_'])
-        if res:
-            flash("Данные успешно сохранены", "success")
+        try:
+            res = dbase.addUserinfo(request.form['name_surname'],
+                                    request.form['gender'], request.form['profession_'],
+                                    request.form['username_'], request.form['password_'])
+            if res:
+                print(current_user.get_name())
+                flash("Данные успешно сохранены", "success")
+        except:
+            flash("Выберите пол", "error")
     return render_template("user_info.html")
 
 

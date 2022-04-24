@@ -16,6 +16,9 @@ class UserLogin(UserMixin):
     def get_name(self):
         return str(self.__user['name_surname'])
 
+    def space(self):
+        return ' '
+
     def get_pass(self):
         return str(self.__user['password'])
 

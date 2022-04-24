@@ -14,7 +14,7 @@
 {% endfor %}
 <form action="/profile" method="post" class="form-contact">
                 <p><a href="{{url_for('logout')}}">Выйти из профиля</a>
-            <p><label>Имя, Фамилия: </label> <input type="text" name="name_surname" value={{current_user.get_name()}} required />
+            <p><label>Имя, Фамилия: </label> <input type="text" name="name_surname" value={{"_".join(current_user.get_name().split())}} required />
             <br>
             <label>Пол:</label><br>
             <label for="male">Мужской</label>
@@ -23,7 +23,7 @@
             <input type="radio" name="gender" id="female" value="Женский"><br />
             <p><label>Username: </label> <input type="text" name="username_" value={{current_user.get_id()}} required />
             <p><label>User id: </label> <input value={{current_user.get_user_id()}} disabled required/>
-            <p><label>Должность: </label> <input type="text" name="profession_" value={{current_user.get_prof()}} required />
+            <p><label>Должность: </label> <input type="text" name="profession_" value={{"_".join(current_user.get_prof().split())}} required />
             <p><label>Пароль: </label> <input type="text" name="password_" value={{current_user.get_pass()}} required />
             <p><input type="submit" value="Редактировать" />
             </form>
